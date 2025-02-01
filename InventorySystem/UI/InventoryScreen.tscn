@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkuhd6c2h0lgo"]
+[gd_scene load_steps=5 format=3 uid="uid://dkuhd6c2h0lgo"]
 
 [ext_resource type="PackedScene" uid="uid://dhkxl5wenauc5" path="res://InventorySystem/UI/InventoryContainer.tscn" id="1_5ipix"]
 [ext_resource type="Script" path="res://InventorySystem/Scripts/inventory_screen.gd" id="1_hygpf"]
 [ext_resource type="Resource" uid="uid://d1yploys54j8i" path="res://InventorySystem/PlayerInventory.tres" id="3_a71yv"]
+[ext_resource type="PackedScene" uid="uid://dx8u4ur25i1wi" path="res://InventorySystem/UI/ui_item_options.tscn" id="4_op0cp"]
 
-[node name="InventoryScreen" type="Control" node_paths=PackedStringArray("WeightText", "ContainerPlacement")]
+[node name="InventoryScreen" type="Control" node_paths=PackedStringArray("WeightText", "ContainerPlacement", "ItemOptions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,34 +13,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hygpf")
-WeightText = NodePath("PanelContainer/VBoxContainer/WeightLabel")
-ContainerPlacement = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer")
+WeightText = NodePath("HBoxContainer/PanelContainer/VBoxContainer/WeightLabel")
+ContainerPlacement = NodePath("HBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer")
+ItemOptions = NodePath("HBoxContainer/UIItemOptions")
 InventoryContainerScene = ExtResource("1_5ipix")
 Inv = ExtResource("3_a71yv")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 156.0
+offset_right = 90.0
 grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
 clip_contents = true
 layout_mode = 2
 
-[node name="WeightLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="WeightLabel" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Weight : 10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UIItemOptions" parent="HBoxContainer" instance=ExtResource("4_op0cp")]
+layout_mode = 2
+
+[connection signal="OnItemConsumed" from="HBoxContainer/UIItemOptions" to="." method="OnItemConsumed"]
+[connection signal="OnItemDroped" from="HBoxContainer/UIItemOptions" to="." method="OnItemDroped"]
+[connection signal="OnItemInspected" from="HBoxContainer/UIItemOptions" to="." method="OnItemInspected"]
+[connection signal="OnItemUsed" from="HBoxContainer/UIItemOptions" to="." method="OnItemUsed"]

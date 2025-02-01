@@ -6,6 +6,7 @@ var _StoredItem : Item
 var _Ammount : int = 0
 
 signal OnAmmountUpdated(NewAmmount : int)
+signal OnContainerEmptied
 
 func RegisterItem(It : Item) -> void:
 	_StoredItem = It
@@ -19,3 +20,6 @@ func GetAmmount() -> int:
 	
 func GetContainedItem() -> Item:
 	return _StoredItem
+
+func ContainerRemoved() -> void:
+	OnContainerEmptied.emit()

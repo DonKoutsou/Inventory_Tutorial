@@ -9,21 +9,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.5
+offset_left = -56.0
 offset_top = -20.0
-offset_right = 63.5
+offset_right = 64.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("1_lsq1a")
 Icon = NodePath("HBoxContainer/ItemIcon")
 ItemAmmount = NodePath("HBoxContainer/ItemAmmount")
 ItemName = NodePath("HBoxContainer/ItemName")
 
+[node name="SelectButton" type="Button" parent="."]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="ItemIcon" type="TextureRect" parent="HBoxContainer"]
@@ -31,6 +36,7 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("1_253sj")
 expand_mode = 1
 
@@ -45,4 +51,5 @@ size_flags_horizontal = 3
 text = "Metal"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
+
+[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]

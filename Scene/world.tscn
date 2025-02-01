@@ -20,7 +20,9 @@ script = ExtResource("1_vnsag")
 ItemScene = ExtResource("2_4uw1s")
 ItemsToSpread = Array[ExtResource("3_2q650")]([ExtResource("4_jtfqm"), ExtResource("5_o0v3h"), ExtResource("6_tm7ek")])
 
-[node name="InventoryScreen" parent="." instance=ExtResource("2_pqito")]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryScreen" parent="CanvasLayer" instance=ExtResource("2_pqito")]
 
 [node name="Character" parent="." instance=ExtResource("1_etjn4")]
+Speed = 5.0

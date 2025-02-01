@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx8u4ur25i1wi"]
+
+[ext_resource type="Script" path="res://InventorySystem/Scripts/UIItemOptions.gd" id="1_kwlrl"]
+
+[node name="UIItemOptions" type="PanelContainer" node_paths=PackedStringArray("ItemNameLabel")]
+custom_minimum_size = Vector2(120, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -99.0
+offset_right = 60.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+script = ExtResource("1_kwlrl")
+ItemNameLabel = NodePath("VBoxContainer/ItemName")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Item Name"
+
+[node name="UseButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Use"
+
+[node name="InspectButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Inspect"
+
+[node name="ConsumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Consume"
+
+[node name="DropButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Drop"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="VBoxContainer/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/InspectButton" to="." method="_on_inspect_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ConsumeButton" to="." method="_on_consume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/DropButton" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

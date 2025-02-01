@@ -29,8 +29,19 @@ func AddItemToInventory(It : Item) -> void:
 		ContainerCreated.emit(ItemContainer)
 		OnItemAdded(It)
 
+func RemoveItemFromContainer(Cont : InventoryItemContainer) -> void:
+	Cont.UpdateAmm(-1)
+	OnItemRemoved(Cont.GetContainedItem())
+	if (Cont.GetAmmount() == 0):
+		_InventoryContents.erase(Cont)
+		Cont.ContainerRemoved()
+
 func OnItemAdded(It : Item) -> void:
 	_CurrentWeight += It._ItemWeight
+	OnWeightChanged.emit(_CurrentWeight)
+
+func OnItemRemoved(It : Item) -> void:
+	_CurrentWeight -= It._ItemWeight
 	OnWeightChanged.emit(_CurrentWeight)
 	
 func CanFitItem(It : Item) -> bool:
