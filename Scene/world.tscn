@@ -1,0 +1,26 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwqpglv527cso"]
+
+[ext_resource type="PackedScene" uid="uid://cenq7toqujdsp" path="res://Scene/character.tscn" id="1_etjn4"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_vnsag"]
+[ext_resource type="PackedScene" uid="uid://5ddtx5p6g2ln" path="res://Scene/Item2D.tscn" id="2_4uw1s"]
+[ext_resource type="PackedScene" uid="uid://dkuhd6c2h0lgo" path="res://InventorySystem/UI/InventoryScreen.tscn" id="2_pqito"]
+[ext_resource type="Script" path="res://InventorySystem/Scripts/Item.gd" id="3_2q650"]
+[ext_resource type="Resource" uid="uid://nqwhwa8p85hc" path="res://Items/Metal.tres" id="4_jtfqm"]
+[ext_resource type="Resource" uid="uid://olg8r7cg4gn3" path="res://Items/Rock.tres" id="5_o0v3h"]
+[ext_resource type="Resource" uid="uid://di8qg85ls2wjk" path="res://Items/Wood.tres" id="6_tm7ek"]
+
+[node name="World" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vnsag")
+ItemScene = ExtResource("2_4uw1s")
+ItemsToSpread = Array[ExtResource("3_2q650")]([ExtResource("4_jtfqm"), ExtResource("5_o0v3h"), ExtResource("6_tm7ek")])
+
+[node name="InventoryScreen" parent="." instance=ExtResource("2_pqito")]
+layout_mode = 1
+
+[node name="Character" parent="." instance=ExtResource("1_etjn4")]

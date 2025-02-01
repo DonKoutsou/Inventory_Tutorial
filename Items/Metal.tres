@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://nqwhwa8p85hc"]
+
+[ext_resource type="Texture2D" uid="uid://dbef7m4ge226k" path="res://Assets/ItemIcons/metal-bar.png" id="1_qnl7p"]
+[ext_resource type="Script" path="res://InventorySystem/Scripts/Item.gd" id="2_7g002"]
+
+[resource]
+script = ExtResource("2_7g002")
+_ItemName = "Metal"
+_ItemDescription = "A metal"
+_ItemWeight = 2.0
+_ItemIcon = ExtResource("1_qnl7p")

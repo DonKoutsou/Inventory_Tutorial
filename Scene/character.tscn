@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cenq7toqujdsp"]
+
+[ext_resource type="Script" path="res://Scripts/character.gd" id="1_iebg7"]
+[ext_resource type="Resource" uid="uid://d1yploys54j8i" path="res://InventorySystem/PlayerInventory.tres" id="2_ktigu"]
+[ext_resource type="Texture2D" uid="uid://cce0u4esct65l" path="res://icon.svg" id="3_serrs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsht6"]
+radius = 20.025
+
+[node name="Character" type="Node2D"]
+position = Vector2(406, 220)
+script = ExtResource("1_iebg7")
+Speed = 2.0
+Inv = ExtResource("2_ktigu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.328125, 0.328125)
+texture = ExtResource("3_serrs")
+
+[node name="ItemArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea"]
+shape = SubResource("CircleShape2D_nsht6")
+
+[connection signal="area_entered" from="ItemArea" to="." method="_on_item_area_area_entered"]

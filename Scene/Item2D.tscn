@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://5ddtx5p6g2ln"]
+
+[ext_resource type="Script" path="res://Scene/Item2D.gd" id="1_drios"]
+[ext_resource type="Texture2D" uid="uid://h0hvwcabyf5x" path="res://Assets/ItemIcons/rock.png" id="2_56v5y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsht6"]
+radius = 20.025
+
+[node name="Item2D" type="Node2D" node_paths=PackedStringArray("ItemSprite")]
+position = Vector2(406, 220)
+script = ExtResource("1_drios")
+ItemSprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.078125, 0.078125)
+texture = ExtResource("2_56v5y")
+
+[node name="ItemArea" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea"]
+shape = SubResource("CircleShape2D_nsht6")

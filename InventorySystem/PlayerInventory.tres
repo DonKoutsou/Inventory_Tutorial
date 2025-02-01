@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://d1yploys54j8i"]
+
+[ext_resource type="Script" path="res://InventorySystem/Scripts/Inventory.gd" id="1_tmfcx"]
+
+[resource]
+script = ExtResource("1_tmfcx")
+MaxWeight = 40.0
