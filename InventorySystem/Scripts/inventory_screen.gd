@@ -7,6 +7,7 @@ class_name InventoryScreen
 @export var ItemOptions : UIItemOptions
 @export var InventoryContainerScene : PackedScene
 @export var Inv : Inventory
+@export var InventoryDescriptorScene : PackedScene
 
 var SelectedContainer : InventoryItemContainer
 
@@ -29,14 +30,24 @@ func _input(event: InputEvent) -> void:
 		visible = !visible
 
 func OnItemContainerSelected(ItemContainer : InventoryUIContainer) -> void:
+	if (SelectedContainer != null):
+		SelectedContainer.disconnect("OnContainerEmptied", OnItemContainerDeselected)
 	SelectedContainer = ItemContainer.GetContainer()
+	SelectedContainer.connect("OnContainerEmptied", OnItemContainerDeselected)
 	ItemOptions.SetSelectedItem(SelectedContainer.GetContainedItem())
+
+func OnItemContainerDeselected() -> void:
+	SelectedContainer.disconnect("OnContainerEmptied", OnItemContainerDeselected)
+	SelectedContainer = null
+	ItemOptions.visible = false
 
 func OnItemUsed() -> void:
 	pass
 
 func OnItemInspected() -> void:
-	pass
+	var Inspector = InventoryDescriptorScene.instantiate() as InspectMenu
+	Inspector.SetItem(SelectedContainer.GetContainedItem())
+	add_child(Inspector)
 
 func OnItemConsumed() -> void:
 	pass

@@ -3,12 +3,14 @@ extends Resource
 class_name Inventory
 
 @export var MaxWeight : float = 40
+@export var BaseItemScene : PackedScene
 
 var _CurrentWeight : float = 0
 
 var _InventoryContents : Array[InventoryItemContainer]
 
 signal ContainerCreated(Cont : InventoryItemContainer)
+signal OnItemDropped(It : Item)
 signal OnWeightChanged(NewW : float)
 
 func AddItemToInventory(It : Item) -> void:
@@ -29,8 +31,10 @@ func AddItemToInventory(It : Item) -> void:
 		ContainerCreated.emit(ItemContainer)
 		OnItemAdded(It)
 
-func RemoveItemFromContainer(Cont : InventoryItemContainer) -> void:
+func RemoveItemFromContainer(Cont : InventoryItemContainer, DropToFloor : bool = true) -> void:
 	Cont.UpdateAmm(-1)
+	if (DropToFloor):
+		OnItemDropped.emit(Cont.GetContainedItem())
 	OnItemRemoved(Cont.GetContainedItem())
 	if (Cont.GetAmmount() == 0):
 		_InventoryContents.erase(Cont)

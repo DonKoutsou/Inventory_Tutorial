@@ -9,6 +9,7 @@ class_name InventoryUIContainer
 var _ItemCont : InventoryItemContainer
 
 signal OnContainerSelected
+signal OnContainerDeselected
 
 func RegisterContainer(Cont : InventoryItemContainer) -> void:
 	Cont.connect("OnAmmountUpdated", OnAmmountUpdated)
@@ -28,4 +29,5 @@ func _on_select_button_pressed() -> void:
 	OnContainerSelected.emit()
 
 func DeleteSelf() -> void:
+	OnContainerDeselected.emit()
 	queue_free()

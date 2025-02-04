@@ -5,6 +5,14 @@ class_name Character
 @export var Speed : float
 @export var Inv : Inventory
 
+func _ready() -> void:
+	Inv.connect("OnItemDropped", DropItemToFeet)
+
+func DropItemToFeet(It : Item) -> void:
+	var ItemSc = Inv.BaseItemScene.instantiate() as Item2D
+	ItemSc.SetItem(It)
+	get_parent().add_child(ItemSc)
+
 func _physics_process(delta: float) -> void:
 	if (Input.is_action_pressed("MoveUp")):
 		position.y -= Speed

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cce0u4esct65l" path="res://icon.svg" id="3_serrs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nsht6"]
-radius = 20.025
+radius = 20.0
 
 [node name="Character" type="Node2D"]
 position = Vector2(406, 220)

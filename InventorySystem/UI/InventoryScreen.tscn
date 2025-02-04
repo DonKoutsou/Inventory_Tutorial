@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkuhd6c2h0lgo"]
+[gd_scene load_steps=6 format=3 uid="uid://dkuhd6c2h0lgo"]
 
 [ext_resource type="PackedScene" uid="uid://dhkxl5wenauc5" path="res://InventorySystem/UI/InventoryContainer.tscn" id="1_5ipix"]
 [ext_resource type="Script" path="res://InventorySystem/Scripts/inventory_screen.gd" id="1_hygpf"]
 [ext_resource type="Resource" uid="uid://d1yploys54j8i" path="res://InventorySystem/PlayerInventory.tres" id="3_a71yv"]
 [ext_resource type="PackedScene" uid="uid://dx8u4ur25i1wi" path="res://InventorySystem/UI/ui_item_options.tscn" id="4_op0cp"]
+[ext_resource type="PackedScene" uid="uid://djdnd5pxni077" path="res://InventorySystem/UI/InspectMenu.tscn" id="4_u7s1f"]
 
 [node name="InventoryScreen" type="Control" node_paths=PackedStringArray("WeightText", "ContainerPlacement", "ItemOptions")]
 layout_mode = 3
@@ -18,6 +19,7 @@ ContainerPlacement = NodePath("HBoxContainer/PanelContainer/VBoxContainer/Scroll
 ItemOptions = NodePath("HBoxContainer/UIItemOptions")
 InventoryContainerScene = ExtResource("1_5ipix")
 Inv = ExtResource("3_a71yv")
+InventoryDescriptorScene = ExtResource("4_u7s1f")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
