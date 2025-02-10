@@ -42,7 +42,7 @@ func OnItemContainerDeselected() -> void:
 	ItemOptions.visible = false
 
 func OnItemUsed() -> void:
-	pass
+	Inv.UseItem(SelectedContainer)
 
 func OnItemInspected() -> void:
 	var Inspector = InventoryDescriptorScene.instantiate() as InspectMenu

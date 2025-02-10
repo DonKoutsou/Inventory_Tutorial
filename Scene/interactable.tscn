@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dslfspgyeb1st"]
+
+[ext_resource type="Texture2D" uid="uid://coypfs50fv062" path="res://Assets/damaged-house.png" id="1_3uklf"]
+[ext_resource type="Script" path="res://Scene/interactable.gd" id="1_c68tf"]
+[ext_resource type="Resource" uid="uid://di8qg85ls2wjk" path="res://Items/Wood.tres" id="2_jhwld"]
+[ext_resource type="Texture2D" uid="uid://cwwtnk45hoo4d" path="res://Assets/fixed-house.png" id="3_wejpr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_18iay"]
+radius = 40.0
+
+[node name="Interactable" type="Node2D"]
+script = ExtResource("1_c68tf")
+NeededItem = ExtResource("2_jhwld")
+TransitionTexture = ExtResource("3_wejpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.101562, 0.101562)
+texture = ExtResource("1_3uklf")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_18iay")

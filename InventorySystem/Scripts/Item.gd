@@ -16,8 +16,8 @@ func GetItemDescription() -> String:
 func GetItemWeight() -> float:
 	return _ItemWeight
 
-func GetItemIcon() -> Texture:
-	return _ItemIcon
-
 func CanStack() -> bool:
 	return true
+	
+func GetItemIcon() -> Texture:
+	return _ItemIcon

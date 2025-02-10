@@ -10,6 +10,7 @@ var _CurrentWeight : float = 0
 var _InventoryContents : Array[InventoryItemContainer]
 
 signal ContainerCreated(Cont : InventoryItemContainer)
+signal OnItemUsed(Cont : InventoryItemContainer)
 signal OnItemDropped(It : Item)
 signal OnWeightChanged(NewW : float)
 
@@ -30,6 +31,9 @@ func AddItemToInventory(It : Item) -> void:
 		_InventoryContents.append(ItemContainer)
 		ContainerCreated.emit(ItemContainer)
 		OnItemAdded(It)
+
+func UseItem(Cont : InventoryItemContainer) -> void:
+	OnItemUsed.emit(Cont)
 
 func RemoveItemFromContainer(Cont : InventoryItemContainer, DropToFloor : bool = true) -> void:
 	Cont.UpdateAmm(-1)

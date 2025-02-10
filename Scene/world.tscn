@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwqpglv527cso"]
+[gd_scene load_steps=10 format=3 uid="uid://dwqpglv527cso"]
 
 [ext_resource type="PackedScene" uid="uid://cenq7toqujdsp" path="res://Scene/character.tscn" id="1_etjn4"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_vnsag"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://nqwhwa8p85hc" path="res://Items/Metal.tres" id="4_jtfqm"]
 [ext_resource type="Resource" uid="uid://olg8r7cg4gn3" path="res://Items/Rock.tres" id="5_o0v3h"]
 [ext_resource type="Resource" uid="uid://di8qg85ls2wjk" path="res://Items/Wood.tres" id="6_tm7ek"]
+[ext_resource type="PackedScene" uid="uid://dslfspgyeb1st" path="res://Scene/interactable.tscn" id="9_d4rjj"]
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -26,3 +27,12 @@ ItemsToSpread = Array[ExtResource("3_2q650")]([ExtResource("4_jtfqm"), ExtResour
 
 [node name="Character" parent="." instance=ExtResource("1_etjn4")]
 Speed = 5.0
+
+[node name="Interactable" parent="." instance=ExtResource("9_d4rjj")]
+position = Vector2(887, 311)
+
+[node name="Interactable2" parent="." instance=ExtResource("9_d4rjj")]
+position = Vector2(805, 181)
+
+[node name="Interactable3" parent="." instance=ExtResource("9_d4rjj")]
+position = Vector2(861, 531)
